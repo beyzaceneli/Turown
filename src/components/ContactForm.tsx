@@ -25,7 +25,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-100 via-slate-50 to-blue-100 ">
+    <section id="contact" className="py-40 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-indigo-100 via-slate-50 to-blue-100 ">
       <div className="max-w-7xl mx-auto text-center mb-12">
         <h2 className="text-4xl font-bold text-slate-800 mb-4">İletişime Geçin</h2>
         <p className="text-slate-600">Aklınızdaki her soru için bizimle iletişime geçin.</p>

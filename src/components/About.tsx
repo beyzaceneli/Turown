@@ -12,23 +12,30 @@ const About = () => {
   const [activeTab, setActiveTab] = useState<'bizkimiz' | 'misyonvizyon'>('bizkimiz');
 
   // Placeholder images - replace with your actual image imports
-  const tabData: Record<'bizkimiz' | 'misyonvizyon', TabContent> = {
-    bizkimiz: {
+  const tabData: { key: 'bizkimiz' | 'misyonvizyon'; content: TabContent }[] = [
+  {
+    key: 'bizkimiz',
+    content: {
       title: 'Biz Kimiz?',
       text: 'Turown Endüstriyel; otomasyon, yapay zeka, IoT ve üretim teknolojileri alanlarında yenilikçi çözümler sunan bir teknoloji firmasıdır. Hedefimiz; üretim süreçlerini dijitalleştirerek, işletmelere sürdürülebilir ve verimli sistemler kazandırmaktır.',
       img: hero,
     },
-    misyonvizyon: {
+  },
+  {
+    key: 'misyonvizyon',
+    content: {
       title: 'Misyonumuz & Vizyonumuz',
       text: 'Misyonumuz, endüstri 4.0 ve dijital dönüşüm alanlarında öncü çözümler geliştirerek iş ortaklarımızın rekabet gücünü artırmaktır. Vizyonumuz, global ölçekte akıllı üretim altyapılarına yön veren lider bir teknoloji sağlayıcısı olmaktır.',
-      img: vision
+      img: vision,
     },
-  };
+  },
+];
 
-  const current = tabData[activeTab];
+
+  const current = tabData[activeTab === 'bizkimiz' ? 0 : 1].content;
 
   return (
-    <section id="about" className="relative bg-gradient-to-br from-indigo-100 via-slate-50 to-blue-100 py-24 overflow-hidden">
+    <section id="about" className="relative bg-gradient-to-br from-indigo-100 via-slate-50 to-blue-100 py-40 overflow-hidden ">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 right-1/4 w-72 h-72 bg-indigo-200/30 rounded-full blur-3xl animate-pulse delay-500"></div>
@@ -53,7 +60,7 @@ const About = () => {
               <button
                 key={key}
                 onClick={() => setActiveTab(key)}
-                className={`px-8 py-3 rounded-xl font-semibold text-sm md:text-base transition-all duration-500 relative overflow-hidden ${
+                className={`px-8 py-3 rounded-xl cursor-pointer font-semibold text-sm md:text-base transition-all duration-500 relative overflow-hidden ${
                   activeTab === key
                     ? 'text-white shadow-lg'
                     : 'text-slate-700 hover:text-slate-900 hover:bg-white/50'
@@ -93,7 +100,8 @@ const About = () => {
                 <img
                   src={current.img}
                   alt={current.title}
-                  className="relative w-full h-[350px] object-cover rounded-2xl shadow-xl group-hover:scale-105 transition-transform duration-700"
+                  loading='lazy'
+                  className="relative w-full h-[350px] object-cover rounded-2xl shadow-xl"
                 />
                 
                 {/* Image Overlay Glow */}

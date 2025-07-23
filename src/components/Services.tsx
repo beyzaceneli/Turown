@@ -53,7 +53,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section id='services' className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section id='services' className="relative bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100 py-40 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-0 left-1/4 w-72 h-72 bg-blue-200/30 rounded-full blur-3xl animate-pulse"></div>

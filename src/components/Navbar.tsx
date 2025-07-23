@@ -10,9 +10,15 @@ const navLinks = [
   { label: "Services", href: "#services" },
 ];
 
+const languages = [
+  { code: "tr", label: "TR", emoji: "🇹🇷" },
+  { code: "en", label: "EN", emoji: "🇬🇧" },
+];
+
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [language, setLanguage] = useState<"tr" | "en">("tr");
 
   useEffect(() => {
     const onScroll = () => {
@@ -29,7 +35,7 @@ const Navbar = () => {
       }`}
     >
       <nav className="relative max-w-7xl mx-auto flex items-center justify-between px-4 py-4">
-        {/* SOL: Logo */}
+        {/* Sol: Logo */}
         <a href="#home" className="flex items-center space-x-2">
           <img
             src={isScrolled ? logoDark : logoWhite}
@@ -38,7 +44,7 @@ const Navbar = () => {
           />
         </a>
 
-        {/* ORTA: Menü */}
+        {/* Orta: Menü */}
         <ul className="hidden md:flex absolute left-1/2 -translate-x-1/2 space-x-8 text-sm font-medium">
           {navLinks.map((item) => (
             <li key={item.href}>
@@ -56,35 +62,40 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* SAĞ: Contact butonu */}
-        <div className="flex items-center gap-2">
- <a
-  href="tel:+905457956231"
-  className="inline-flex items-center gap-4 px-6 py-3 bg-[#4AC3F0] text-white font-bold rounded-full shadow-lg relative overflow-hidden"
->
-  {/* Telefon ikonu + çınlama animasyonu */}
-  <div className="relative w-10 h-10">
-    {/* Dalga halkası */}
-    <span className="absolute inset-0 rounded-full border-2 border-white animate-ring" />
-    {/* <span className="absolute inset-0 rounded-full border-2 border-white animate-ring delay-200" /> */}
-    <span className="absolute inset-0 rounded-full border-2 border-white animate-ring delay-400" />
+        {/* Sağ: Telefon Butonu, Dil Seçici & Hamburger */}
+        <div className="flex items-center gap-3">
+          {/* Dil Seçici */}
+          
 
-    {/* İkonun kendisi */}
-    <div className="w-10 h-10 flex items-center justify-center bg-white text-[#4AC3F0] rounded-full relative z-10">
-      <PhoneIcon className="w-5 h-5" />
-    </div>
-  </div>
+          {/* Telefon Butonu */}
+          <a
+            href="tel:+905457956231"
+            className="relative inline-flex items-center gap-2 px-3 py-2 bg-[#4AC3F0] text-white text-sm font-semibold rounded-full shadow-md hover:scale-105 transition-all duration-200"
+          >
+            <span className="absolute w-7 h-7 rounded-full border-white border-1 opacity-50 animate-ring-slow"></span>
+            <span className="absolute w-7 h-7 rounded-full border-white border-1 opacity-50 animate-ring-slow"></span>
+            <div className="w-7 h-7 z-10 flex items-center justify-center bg-white text-[#4AC3F0] rounded-full">
+              <PhoneIcon className="w-4 h-4" />
+            </div>
+            <span className="hidden md:inline z-10">+90 545 795 6231</span>
+          </a>
+          <div className="relative">
+            <select
+              value={language}
+              onChange={(e) => setLanguage(e.target.value as "tr" | "en")}
+              className={` font-semibold rounded-full px-3 py-2 appearance-none border ${
+                isScrolled ? "bg-white text-gray-700" : "bg-transparent text-white"
+              }`}
+            >
+              {languages.map((lang) => (
+                <option key={lang.code} value={lang.code}>
+                  {lang.emoji} {lang.label}
+                </option>
+              ))}
+            </select>
+          </div>
 
-  {/* Numara */}
-  <span className="text-lg tracking-wide">+90 545 795 6231</span>
-</a>
-
-
-
-
-         
-
-          {/* Mobil Menü Butonu */}
+          {/* Hamburger */}
           <button
             className="md:hidden ml-2 p-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
             onClick={() => setMenuOpen((v) => !v)}
@@ -101,24 +112,38 @@ const Navbar = () => {
 
       {/* Mobil Menü */}
       {menuOpen && (
-        <div className="md:hidden fixed inset-0 bg-black/80 z-40 flex flex-col items-center justify-center gap-8">
-          {navLinks.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-white text-2xl font-semibold hover:text-blue-400 transition"
-              onClick={() => setMenuOpen(false)}
-            >
-              {item.label}
-            </a>
-          ))}
-          <a
-            href="#contact"
-            className="bg-blue-600 text-white px-6 py-3 rounded-md font-semibold shadow-lg hover:bg-blue-700 transition"
-            onClick={() => setMenuOpen(false)}
-          >
-            Contact Us
-          </a>
+        <div className="md:hidden absolute top-full left-0 w-full bg-white shadow-md z-40">
+          <nav className="flex flex-col px-6 py-4 gap-4">
+            {navLinks.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="text-gray-700 text-base font-medium hover:text-blue-600"
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+
+            {/* Mobilde Dil Seçici */}
+            <div className="pt-2">
+              <label htmlFor="mobile-lang" className="block text-gray-700 mb-1">
+                Dili Seçin
+              </label>
+              <select
+                id="mobile-lang"
+                value={language}
+                onChange={(e) => setLanguage(e.target.value as "tr" | "en")}
+                className="w-full border border-gray-300 rounded px-3 py-2"
+              >
+                {languages.map((lang) => (
+                  <option key={lang.code} value={lang.code}>
+                    {lang.emoji} {lang.label}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </nav>
         </div>
       )}
     </header>

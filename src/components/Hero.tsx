@@ -1,12 +1,13 @@
-import React from "react";
 import hero from "../assets/hero.jpg";
-import { ArrowDownIcon } from "@heroicons/react/24/solid";
 import CountUp from "react-countup";
+
+
+
 
 const Hero = () => (
   <section
     id="home"
-    className="relative h-screen bg-cover bg-center flex items-center justify-center text-white overflow-hidden"
+    className="relative  h-screen bg-cover bg-center flex items-center justify-center text-white overflow-hidden"
     style={{ backgroundImage: `url(${hero})` }}
   >
     {/* Simple elegant overlay */}
@@ -21,7 +22,7 @@ const Hero = () => (
     <div className="relative z-10 flex flex-col items-center justify-center w-full px-6 max-w-5xl text-center">
       
       {/* Clean main content */}
-      <div className="mb-16">
+      <div className="mb-16 mt-20">
         <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">
           Turown
         </h1>
@@ -73,12 +74,8 @@ const Hero = () => (
       </div>
     </div>
 
-    {/* Simple scroll button */}
-    <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-      <button className="p-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20 transition-all duration-300 animate-bounce">
-        <ArrowDownIcon className="w-6 h-6 text-white" />
-      </button>
-    </div>
+   
+    
   </section>
 );
 
