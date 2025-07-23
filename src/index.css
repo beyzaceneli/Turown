@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@layer utilities {
+  /* 🎨 Özel Mavi Arka Plan */
+  .bg-blue-600 {
+    background-color: #4AC3F0;
+  }
+
+  /* 🎨 Metin Renkleri */
+  .text-blue-700,
+  .text-blue-400,
+  .text-blue-300,
+  .text-blue-600,
+  .hover\:text-blue-300:hover,
+  .hover\:text-blue-600:hover {
+    color: #4AC3F0;
+  }
+  .from-indigo-60{
+    --tw-gradient-from: #4AC3F0;
+  }
+  .to-blue-600 {
+    --tw-gradient-to: #54BC73;
+  }
+
+  /* 🔄 Shake Animasyonu */
+  @keyframes shake {
+    0%, 100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-3px);
+    }
+    50% {
+      transform: translateX(3px);
+    }
+    75% {
+      transform: translateX(-3px);
+    }
+  }
+
+  .animate-shake {
+    animation: shake 0.5s infinite;
+  }
+
+  /* 📱 Özel Buton Arka Plan (Koyu zemin) */
+  .bg-call-dark {
+    background-color: #4AC3F0;
+  }
+
+  /* 📞 Icon arka planı için beyaz zemin */
+  .bg-call-icon {
+    background-color: white;
+  }
+
+  /* 🎯 Accent pembe */
+  .text-call-accent {
+    color: #54BC73;
+  }
+
+  /* ✅ Koyu mavi hover efekti */
+  .hover\:bg-call-dark:hover {
+    background-color: #1b1f3a;
+  }
+
+  /* 🔔 Telefon Çalıyor (dalga) Efekti */
+  @keyframes ring {
+    0% {
+      transform: scale(1);
+      opacity: 0.6;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+
+  .animate-ring {
+    animation: ring 1.5s infinite;
+  }
+
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  .delay-400 {
+    animation-delay: 0.4s;
+  }
+   @keyframes slideInUp {
+          from {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+  
+}
