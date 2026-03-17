@@ -77,7 +77,7 @@ const Navbar = () => {
             <div className="w-7 h-7 z-10 flex items-center justify-center bg-white text-[#4AC3F0] rounded-full">
               <PhoneIcon className="w-4 h-4" />
             </div>
-            <span className="hidden md:inline z-10">+90 545 795 6231</span>
+            <span className="hidden md:inline z-10">+90 XXX XXX XXXX</span>
           </a>
           <div className="relative">
             <select
